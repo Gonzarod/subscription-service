@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 
 public interface PlanService {
     Page<Plan> getAllPlans(Pageable pageable);
-    Plan getPlanById(Long planId);
+    //Plan getPlanById(Long planId);
 
-    Plan createPlan(Plan plan);
-    Plan updatePlan(Long planId, Plan planDetails);
-    ResponseEntity<?> deletePlan(Long planId);
+    //Plan createPlan(Plan plan);
+    //Plan updatePlan(Long planId, Plan planDetails);
+    //ResponseEntity<?> deletePlan(Long planId);
 
 }

@@ -20,7 +20,7 @@ public class PlanServiceImpl implements PlanService {
     public Page<Plan> getAllPlans(Pageable pageable) {
         return planRepository.findAll(pageable);
     }
-
+/*
     @Override
     public Plan getPlanById(Long planId) {
         return planRepository.findById(planId).orElseThrow(()->
@@ -40,7 +40,7 @@ public class PlanServiceImpl implements PlanService {
              plan.setTittle(planDetails.getTittle());
              plan.setHours(planDetails.getHours());
              plan.setPrice(planDetails.getPrice());
-             plan.setRole(planDetails.getRole());
+             //plan.setRole(planDetails.getRole());
              return planRepository.save(plan);
         }).orElseThrow(()->new ResourceNotFoundException("Plan with Id: "+planId+" not found"));
     }
@@ -52,4 +52,6 @@ public class PlanServiceImpl implements PlanService {
             return ResponseEntity.ok().build();
         }).orElseThrow(()->new ResourceNotFoundException("Plan with Id: "+planId+" not found"));
     }
+    */
+
 }

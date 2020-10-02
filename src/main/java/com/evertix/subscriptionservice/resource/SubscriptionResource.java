@@ -12,7 +12,7 @@ public class SubscriptionResource {
 
     private Boolean active;
 
-    private Long userID;
+    private Long userId;
 
     private Plan plan;
 

@@ -13,5 +13,4 @@ public class PlanResource {
     private String tittle;
     private Short hours;
     private BigDecimal price;
-    private String role;
 }

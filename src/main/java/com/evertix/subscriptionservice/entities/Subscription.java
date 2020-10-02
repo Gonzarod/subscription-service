@@ -1,27 +1,26 @@
 package com.evertix.subscriptionservice.entities;
 
 import com.evertix.subscriptionservice.model.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "subscriptions")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Subscription extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Boolean active;
-
-
-    @Transient
-    private User user;
 
     @Column(name="user_id")
     private Long userId;
@@ -31,5 +30,14 @@ public class Subscription extends AuditModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
     //@JsonIgnore
     private Plan plan;
+
+    public Subscription(Long userId,Plan plan,Boolean active){
+        this.userId=userId;
+        this.plan=plan;
+        this.active=active;
+    }
+
+    @Transient
+    private User usermodel;
 
 }

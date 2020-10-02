@@ -1,6 +1,6 @@
 package com.evertix.subscriptionservice.repository;
 
-import com.evertix.tutofastbackend.model.Subscription;
+import com.evertix.subscriptionservice.entities.Subscription;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
