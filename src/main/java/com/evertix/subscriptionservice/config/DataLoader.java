@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,12 +33,22 @@ public class DataLoader {
         Plan plan2=new Plan("Platinum Plan", (short) 20, new BigDecimal("150.0"));
         Plan plan3=new Plan("Golden Plan", (short) 30, new BigDecimal("200.0"));
 
-        this.planRepository.saveAll(List.of(plan1, plan2, plan3));
+        List<Plan> plans = new ArrayList<Plan>();
+        plans.add(plan1);
+        plans.add(plan2);
+        plans.add(plan3);
 
+        this.planRepository.saveAll(plans);
+
+
+        List<Subscription> subscriptions = new ArrayList<Subscription>();
+        subscriptions.add(new Subscription((long) 1,plan1,true));
+        subscriptions.add(new Subscription((long) 3,plan2,true));
+        subscriptions.add(new Subscription((long) 2,plan3,true));
+
+        
         //Subscription
-        this.subscriptionRepository.saveAll(List.of(new Subscription((long) 1,plan1,true),
-                                            new Subscription((long) 3,plan2,true),
-                                            new Subscription((long) 2,plan3,true)));
+        this.subscriptionRepository.saveAll(subscriptions);
 
 
 
