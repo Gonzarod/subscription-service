@@ -3,11 +3,13 @@ package com.evertix.subscriptionservice.config;
 
 import com.evertix.subscriptionservice.entities.Plan;
 import com.evertix.subscriptionservice.entities.Subscription;
+import com.evertix.subscriptionservice.model.User;
 import com.evertix.subscriptionservice.repository.PlanRepository;
 import com.evertix.subscriptionservice.repository.SubscriptionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,11 +21,13 @@ public class DataLoader {
 
     private PlanRepository planRepository;
     private SubscriptionRepository subscriptionRepository;
+    private RestTemplate restTemplate;
 
     @Autowired
-    public DataLoader(SubscriptionRepository subscriptionRepository,PlanRepository planRepository) {
+    public DataLoader(SubscriptionRepository subscriptionRepository,PlanRepository planRepository, RestTemplate restTemplate) {
         this.subscriptionRepository=subscriptionRepository;
         this.planRepository=planRepository;
+        this.restTemplate=restTemplate;
         LoadData();
     }
 
@@ -40,13 +44,11 @@ public class DataLoader {
 
         this.planRepository.saveAll(plans);
 
-
+        User userStudent = restTemplate.getForObject("https://tutofast-user-service.herokuapp.com/api/users/username/jesus.student",User.class);
         List<Subscription> subscriptions = new ArrayList<Subscription>();
-        subscriptions.add(new Subscription((long) 1,plan1,true));
-        subscriptions.add(new Subscription((long) 3,plan2,true));
-        subscriptions.add(new Subscription((long) 2,plan3,true));
+        subscriptions.add(new Subscription(userStudent.getId(), plan1,false));
+        subscriptions.add(new Subscription(userStudent.getId(),plan2,true));
 
-        
         //Subscription
         this.subscriptionRepository.saveAll(subscriptions);
 

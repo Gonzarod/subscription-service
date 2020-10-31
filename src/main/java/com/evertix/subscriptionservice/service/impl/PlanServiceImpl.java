@@ -10,14 +10,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlanServiceImpl implements PlanService {
 
     @Autowired
     PlanRepository planRepository;
 
+
     @Override
-    public Page<Plan> getAllPlans(Pageable pageable) {
+    public List<Plan> getAllPlans() {
+        return planRepository.findAll();
+    }
+
+    @Override
+    public Page<Plan> getAllPlansPage(Pageable pageable) {
         return planRepository.findAll(pageable);
     }
 /*
