@@ -1,6 +1,7 @@
 package com.evertix.subscriptionservice.entities;
 
 import com.evertix.subscriptionservice.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties(value = {"userId"},allowSetters = true)
 public class Subscription extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

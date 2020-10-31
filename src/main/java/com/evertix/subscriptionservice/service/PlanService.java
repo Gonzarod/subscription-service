@@ -3,10 +3,12 @@ package com.evertix.subscriptionservice.service;
 import com.evertix.subscriptionservice.entities.Plan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface PlanService {
-    Page<Plan> getAllPlans(Pageable pageable);
+    List<Plan> getAllPlans();
+    Page<Plan> getAllPlansPage(Pageable pageable);
     //Plan getPlanById(Long planId);
 
     //Plan createPlan(Plan plan);
