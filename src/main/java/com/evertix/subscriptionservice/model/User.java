@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class User {
 
     public User(String username, String password, String email, String name,
-                String lastName, String dni, String phone, LocalDate birthday, String address) {
+                String lastName, String dni, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -20,8 +20,7 @@ public class User {
         this.lastName = lastName;
         this.dni = dni;
         this.phone = phone;
-        this.birthday = birthday;
-        this.address = address;
+
     }
 
     private Long id;
@@ -40,14 +39,5 @@ public class User {
 
     private String phone;
 
-    private LocalDate birthday;
-
-    private String address;
-
-    private int totalStar;
-
-    private Boolean active;
-
-    private String linkedin;
 
 }
