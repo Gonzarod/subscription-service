@@ -31,7 +31,7 @@ public class SubscriptionServiceImp implements SubscriptionService {
         return subscriptionRepository.findAll().stream().map(subscription -> {
             //User student=restTemplate.getForObject("https://user-service/api/users/"+review.getStudentId(),User.class);
             //User teacher=restTemplate.getForObject("https://user-service/api/users/"+ review.getTeacherId(),User.class);
-            User student=restTemplate.getForObject("https://tutofast-user-service.herokuapp.com/api/users/"+subscription.getUserId(),User.class);
+            User student=restTemplate.getForObject("http://tutofast-user-service.eastus.azurecontainer.io:8085/api/users/"+subscription.getUserId(),User.class);
 
             subscription.setUsermodel(student);
             return subscription;
@@ -44,7 +44,7 @@ public class SubscriptionServiceImp implements SubscriptionService {
         Page<Subscription> page=subscriptionRepository.findAll(pageable);
         List<Subscription> result=page.getContent().stream().map(subscription -> {
             //User student=restTemplate.getForObject("https://user-service/api/users/"+ subscription.getTeacherId()+"/",User.class);
-            User student=restTemplate.getForObject("https://tutofast-user-service.herokuapp.com/api/users/"+subscription.getUserId(),User.class);
+            User student=restTemplate.getForObject("http://tutofast-user-service.eastus.azurecontainer.io:8085/api/users/"+subscription.getUserId(),User.class);
             subscription.setUsermodel(student);
             return subscription;
         }).collect(Collectors.toList());
